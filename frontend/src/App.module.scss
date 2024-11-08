@@ -1,11 +1,21 @@
-@import 'styles/theme.scss';
-
 .app {
   height: 100vh;
   padding: 8px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
   align-items: center;
   justify-content: flex-start;
-  background-color: $background;
+  background-color: $background-01;
+
+  .filePreview {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  button {
+    align-self: flex-end;
+  }
 }
