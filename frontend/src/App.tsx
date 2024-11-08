@@ -1,34 +1,41 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { Box, Button, Heading, IconButton } from '@chakra-ui/react';
+import classes from './App.module.scss';
+import DragAndDrop from './components/DragAndDrop/DragAndDrop';
+import { useCallback, useState } from 'react';
+import { FileWithPath } from 'react-dropzone';
+import { MdClose } from 'react-icons/md';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [uploadedFile, setUploadedFile] = useState<FileWithPath | null>(null);
+
+  const onRemoveFile = useCallback(() => {
+    setUploadedFile(null);
+  }, [setUploadedFile]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className={classes.app}>
+      <Heading as={'h1'}>Welcome to XYZ</Heading>
+      <Heading as={'h6'}>Start by uploading document!</Heading>
+      {!uploadedFile ? (
+        <DragAndDrop setUploadedFile={setUploadedFile} />
+      ) : (
+        <Box className={classes.filePreview}>
+          <IconButton onClick={onRemoveFile} variant={'outline'} size={'xs'}>
+            <MdClose />
+          </IconButton>
+          <iframe height="100%" src={URL.createObjectURL(uploadedFile)} />
+          <Button
+            className={classes.processButton}
+            disabled={!uploadedFile}
+            onClick={() => {
+              console.log('process file');
+            }}
+          >
+            Process
+          </Button>
+        </Box>
+      )}
+    </div>
   );
 }
 
