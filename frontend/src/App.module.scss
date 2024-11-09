@@ -8,14 +8,33 @@
   justify-content: flex-start;
   background-color: $background-01;
 
-  .filePreview {
-    display: flex;
-    gap: 8px;
-    flex-direction: column;
+  .fileExtractContainer {
+    width: 100%;
     height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 8px;
+    justify-items: center;
+    align-items: center;
   }
 
-  button {
-    align-self: flex-end;
+  .cardRoot {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 8px;
+
+    .cardFooter {
+      align-self: flex-end;
+    }
+  }
+
+  .fileMetadataContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
   }
 }

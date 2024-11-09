@@ -7,6 +7,11 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react-dropzone'],
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {
