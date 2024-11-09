@@ -4,10 +4,13 @@ import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 import { useCallback, useState } from 'react';
 import { FileWithPath } from 'react-dropzone';
 import { useExtractData } from '@/api/hooks/';
+import MetadataCard from '@/components/MetadataCard/MetadataCard.tsx';
 
 function App() {
   const [uploadedFile, setUploadedFile] = useState<FileWithPath | null>(null);
   const { mutate, isPending, data } = useExtractData();
+
+  //todo: responsive design
 
   const onRemoveFile = useCallback(() => {
     setUploadedFile(null);
@@ -54,10 +57,7 @@ function App() {
               {isPending && <Spinner colorPalette={'green'} />}
             </Box>
           ) : (
-            <Card.Root>
-              <Card.Title>File metadata</Card.Title>
-              <Card.Body>{data.file_name}</Card.Body>
-            </Card.Root>
+            <MetadataCard extractedData={data} />
           )}
         </Box>
       )}
