@@ -9,13 +9,12 @@ import FilePreviewCard from '@/components/FilePreviewCard/FilePreviewCard.tsx';
 
 function App() {
   const [uploadedFile, setUploadedFile] = useState<FileWithPath | null>(null);
-  const { mutate, isPending, data } = useExtractData();
-
-  //todo: responsive design
+  const { mutate, isPending, data, reset } = useExtractData();
 
   const onRemoveFile = useCallback(() => {
     setUploadedFile(null);
-  }, [setUploadedFile]);
+    reset();
+  }, [setUploadedFile, reset]);
 
   const onProcessFile = async () => {
     if (!uploadedFile) return;
