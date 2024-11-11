@@ -10,7 +10,16 @@ export const extractData = async (formData: FormData) => {
   };
 
   const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+
   return (await res.json()) as ExtractDataType;
+};
+
+type PostDataResponse = {
+  status: boolean;
 };
 
 export const postData = async (data: ExtractDataType) => {
@@ -22,5 +31,9 @@ export const postData = async (data: ExtractDataType) => {
     body: JSON.stringify(data),
   });
 
-  return await res.json();
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+
+  return (await res.json()) as PostDataResponse;
 };

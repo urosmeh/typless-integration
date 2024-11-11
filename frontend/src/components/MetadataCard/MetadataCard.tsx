@@ -39,10 +39,10 @@ const MetadataCard = ({ extractedData }: MetadataCardProps) => {
       <Box key={f.name}>
         <Text className={classes.label}>{beautifyFieldName(f.name)}</Text>
         {f.multiple_values ? (
-          <Box>nevem še</Box>
+          <Box>Multiple</Box>
         ) : (
           <Editable.Root
-            value={f.values[0].value}
+            value={f.values[0].value || 'n/a'}
             onValueChange={(e) => handleChange(i, 0, e.value)}
           >
             <Editable.Preview />
