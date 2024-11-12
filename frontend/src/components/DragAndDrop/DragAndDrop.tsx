@@ -29,6 +29,7 @@ const DragAndDrop = ({ setUploadedFile }: DragAndDropProps) => {
 
   return (
     <Box
+      data-testid="drag-and-drop"
       {...getRootProps()}
       className={classNames(classes.container, {
         [classes.isDragActive]: isDragActive,
