@@ -1,11 +1,13 @@
-import { Box, Button, Heading, Spinner } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import classes from './App.module.scss';
 import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 import { useCallback, useState } from 'react';
 import { FileWithPath } from 'react-dropzone';
 import { useExtractData } from '@/api/hooks/';
-import MetadataCard from '@/components/MetadataCard/MetadataCard.tsx';
 import FilePreviewCard from '@/components/FilePreviewCard/FilePreviewCard.tsx';
+import MetadataContainer from '@/components/MetadataContainer/MetadataContainer.tsx';
+
+// TODO:responsive design! && test with backend if everything still works as expected
 
 function App() {
   const [uploadedFile, setUploadedFile] = useState<FileWithPath | null>(null);
@@ -32,21 +34,14 @@ function App() {
       ) : (
         <Box className={classes.fileExtractContainer}>
           <FilePreviewCard file={uploadedFile} onRemoveFile={onRemoveFile} />
-          {!data ? (
-            <Box className={classes.fileMetadataContainer}>
-              <Button
-                className={classes.processButton}
-                disabled={!uploadedFile || isPending}
-                onClick={onProcessFile}
-                colorPalette={'green'}
-              >
-                Process
-              </Button>
-              {isPending && <Spinner colorPalette={'green'} />}
-            </Box>
-          ) : (
-            <MetadataCard extractedData={data} />
-          )}
+          <MetadataContainer
+            data={data}
+            buttonProps={{
+              pending: isPending,
+              disabled: !uploadedFile || isPending,
+              onClick: onProcessFile,
+            }}
+          />
         </Box>
       )}
     </div>
