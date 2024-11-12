@@ -17,24 +17,4 @@
     justify-items: center;
     align-items: center;
   }
-
-  .cardRoot {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    padding: 8px;
-
-    .cardFooter {
-      align-self: flex-end;
-    }
-  }
-
-  .fileMetadataContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-  }
 }
