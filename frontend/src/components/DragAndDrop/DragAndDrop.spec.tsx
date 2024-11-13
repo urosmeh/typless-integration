@@ -22,7 +22,7 @@ describe('Drag and drop tests', async () => {
     const mockSetUploadedFile = vi.fn();
     render(
       <ChakraProvider value={defaultSystem}>
-        <DragAndDrop setUploadedFile={mockSetUploadedFile} />
+        <DragAndDrop onFileDrop={mockSetUploadedFile} />
       </ChakraProvider>,
     );
     expect(
@@ -34,7 +34,7 @@ describe('Drag and drop tests', async () => {
     const mockSetUploadedFile = vi.fn();
     render(
       <ChakraProvider value={defaultSystem}>
-        <DragAndDrop setUploadedFile={mockSetUploadedFile} />
+        <DragAndDrop onFileDrop={mockSetUploadedFile} />
       </ChakraProvider>,
     );
     expect(screen.queryByText('Drop to upload.')).toBeNull();
@@ -50,7 +50,7 @@ describe('Drag and drop tests', async () => {
 
     render(
       <ChakraProvider value={defaultSystem}>
-        <DragAndDrop setUploadedFile={setUploadedFileMock} />
+        <DragAndDrop onFileDrop={setUploadedFileMock} />
       </ChakraProvider>,
     );
 
@@ -71,7 +71,7 @@ describe('Drag and drop tests', async () => {
 
     render(
       <ChakraProvider value={defaultSystem}>
-        <DragAndDrop setUploadedFile={setUploadedFileMock} />
+        <DragAndDrop onFileDrop={setUploadedFileMock} />
       </ChakraProvider>,
     );
 

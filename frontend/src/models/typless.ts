@@ -27,7 +27,7 @@ enum DataType {
   VAT_ID = 'VAT_ID',
 }
 
-interface ExtractedField {
+export interface ExtractedField {
   values: ExtractedFieldValue[];
   name: string;
   data_type: DataType;
