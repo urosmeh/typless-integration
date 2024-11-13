@@ -7,17 +7,17 @@ import { useCallback } from 'react';
 import { FileWithPath } from 'react-dropzone';
 
 type DragAndDropProps = {
-  setUploadedFile: (file: FileWithPath | null) => void;
+  onFileDrop: (file: FileWithPath | null) => void;
 };
 
-const DragAndDrop = ({ setUploadedFile }: DragAndDropProps) => {
+const DragAndDrop = ({ onFileDrop }: DragAndDropProps) => {
   const onDrop = useCallback(
     (acceptedFiles: FileWithPath[]) => {
       if (acceptedFiles.length > 0) {
-        setUploadedFile(acceptedFiles[0]);
+        onFileDrop(acceptedFiles[0]);
       }
     },
-    [setUploadedFile],
+    [onFileDrop],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

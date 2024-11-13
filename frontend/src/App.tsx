@@ -31,7 +31,7 @@ function App() {
       <Heading as={'h1'}>Welcome to XYZ</Heading>
       <Heading as={'h6'}>Start by uploading document!</Heading>
       {!uploadedFile ? (
-        <DragAndDrop setUploadedFile={setUploadedFile} />
+        <DragAndDrop onFileDrop={setUploadedFile} />
       ) : (
         <Box className={classes.fileExtractContainer}>
           <FilePreviewCard file={uploadedFile} onRemoveFile={onRemoveFile} />
