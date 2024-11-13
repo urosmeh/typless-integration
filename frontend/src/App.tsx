@@ -1,4 +1,5 @@
 import { Box, Heading } from '@chakra-ui/react';
+import './styles/main.scss';
 import classes from './App.module.scss';
 import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 import { useCallback, useState } from 'react';

@@ -1,1 +1,2 @@
-@import 'theme';
+@use './theme';
+@forward 'theme';
