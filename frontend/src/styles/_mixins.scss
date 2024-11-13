@@ -1,0 +1,18 @@
+@use './breakpoints' as *;
+@use 'sass:map';
+
+@function breakpoint($size) {
+  @return map.get($breakpoints, $size);
+}
+
+@mixin mq($size) {
+  $breakpoint: breakpoint($size);
+
+  @if $breakpoint != null {
+    @media (min-width: #{$breakpoint}) {
+      @content;
+    }
+  } @else {
+    @error "Breakpoint '#{$size}' is not defined in the map.";
+  }
+}

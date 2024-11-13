@@ -1,2 +1,7 @@
 @use './theme';
+@use './breakpoints';
+@use './mixins';
+
 @forward 'theme';
+@forward 'breakpoints';
+@forward 'mixins';

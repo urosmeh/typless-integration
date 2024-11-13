@@ -8,8 +8,6 @@ import { useExtractData } from '@/api/hooks/';
 import FilePreviewCard from '@/components/FilePreviewCard/FilePreviewCard.tsx';
 import MetadataContainer from '@/components/MetadataContainer/MetadataContainer.tsx';
 
-// TODO:responsive design! && test with backend if everything still works as expected
-
 function App() {
   const [uploadedFile, setUploadedFile] = useState<FileWithPath | null>(null);
   const { mutate, isPending, data, reset } = useExtractData();
