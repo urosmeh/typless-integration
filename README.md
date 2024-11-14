@@ -7,8 +7,9 @@ backend handles file uploads from frontend app.
 - for building app separately check readme's in `backend` and `frontend` folders.
 ### Prerequisites
 - Docker
-- env files in frontend & backend
+- (IMPORTANT) setup env files in frontend & backend folders
   - check `.env.example` files
+  - populate `.env` for frontend and backend
 
 ### 1. build & start
 ```bash
