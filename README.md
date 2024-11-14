@@ -1,22 +1,16 @@
 # typless-integration
 
-This is a Vite + React + TypeScript app for integrating typless - [Typless Docs](https://docs.typless.com/docs/start-here). The app allows users to upload a document, view it in the browser, send it to a backend for metadata extraction, edit the metadata fields, and save the data to a database.
+This is a FastAPI x React app for typless integration([Typless Docs](https://docs.typless.com/docs/start-here)). The
+backend handles file uploads from frontend app.
 
 ## Installation
+- for building app separately check readme's in `backend` and `frontend` folders.
 ### Prerequisites
-- Node.js 21.7.3 or higher
+- Docker
+- env files in frontend & backend
+  - check `.env.example` files
 
-### 1. install dependencies:
+### 1. build & start
 ```bash
-npm install
-```
-### 2. create `env.local` file
-### 3. copy contents from `env.example` to `env.local` or write own
-### 4. run the app:
-```bash
-npm run dev
-```
-### 5. run the tests (optional):
-```bash
-npm run test
+docker-compose up --build
 ```
