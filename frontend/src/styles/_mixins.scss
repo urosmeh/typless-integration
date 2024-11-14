@@ -6,13 +6,13 @@
 }
 
 @mixin mq($size) {
-  $breakpoint: breakpoint($size);
+  @if map.has-key($breakpoints, $size) {
+    $size: map.get($breakpoints, $size);
+    $size: $size - 0.001;
+  }
+  $type: max;
 
-  @if $breakpoint != null {
-    @media (min-width: #{$breakpoint}) {
-      @content;
-    }
-  } @else {
-    @error "Breakpoint '#{$size}' is not defined in the map.";
+  @media only screen and (#{$type}-width: #{$size}px) {
+    @content;
   }
 }
