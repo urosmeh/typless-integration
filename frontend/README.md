@@ -6,6 +6,18 @@ This is a Vite + React + TypeScript app for integrating typless - [Typless Docs]
 ### Prerequisites
 - Node.js 21.7.3 or higher
 
+## With docker:
+### 1. build:
+```bash
+docker build -t typless-fe . 
+```
+
+### 2. run:
+```bash
+docker run -p 5173:5173 typless-fe --name typless-fe-container
+```
+
+## Without docker:
 ### 1. install dependencies:
 ```bash
 npm install
@@ -20,3 +32,5 @@ npm run dev
 ```bash
 npm run test
 ```
+
+### Open http://localhost:5173/
