@@ -2,12 +2,11 @@ import base64
 from typing import Annotated, List, Optional, Any
 
 import requests
-from fastapi import FastAPI, Depends, HTTPException, UploadFile
+from fastapi import FastAPI, Depends, HTTPException, UploadFile, status
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from starlette import status
-from starlette.responses import JSONResponse
 
 from constants import TyplessEndpoints
 
@@ -33,18 +32,6 @@ def get_db():
 
 
 db_dependency = Annotated[Session, Depends(get_db)]
-app = FastAPI(
-    dependencies=[Depends(db_dependency)]
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    # allow_origins=origins,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 class ExtractedFieldValue(BaseModel):
@@ -72,6 +59,20 @@ class ExtractData(BaseModel):
     line_items: List[Any]
     vat_rates: List[Any]
     adjusted_s3_url: str
+
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    # allow_origins=origins,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+settings = Settings()
 
 
 @app.post("/extract-data")
